@@ -22,6 +22,7 @@
 #include <osg/FrameStamp>
 #include <osg/GLObjects>
 
+#include <atomic>
 #include <iosfwd>
 #include <list>
 #include <map>
@@ -590,7 +591,7 @@ protected:
         osg::ref_ptr<BufferObject>      _bufferObject;
         osg::ref_ptr<ModifiedCallback>  _modifiedCallback;
 
-        unsigned int _numClients;
+        std::atomic<unsigned> _numClients;
 };
 
 
