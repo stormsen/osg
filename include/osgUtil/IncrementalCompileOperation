@@ -14,6 +14,8 @@
 #ifndef OSGUTIL_INCREMENTALCOMPILEOPERATOR
 #define OSGUTIL_INCREMENTALCOMPILEOPERATOR
 
+#include <atomic>
+
 #include <osgUtil/GLObjectsVisitor>
 #include <osg/Geometry>
 
@@ -305,11 +307,11 @@ class OSGUTIL_EXPORT IncrementalCompileOperation : public osg::GraphicsOperation
 
         double                              _targetFrameRate;
         double                              _minimumTimeAvailableForGLCompileAndDeletePerFrame;
-        unsigned int                        _maximumNumOfObjectsToCompilePerFrame;
+        std::atomic<unsigned>                        _maximumNumOfObjectsToCompilePerFrame;
         double                              _flushTimeRatio;
         double                              _conservativeTimeRatio;
 
-        unsigned int                        _currentFrameNumber;
+        std::atomic<unsigned>                        _currentFrameNumber;
         unsigned int                        _compileAllTillFrameNumber;
 
         osg::ref_ptr<osg::Geometry>         _forceTextureDownloadGeometry;
