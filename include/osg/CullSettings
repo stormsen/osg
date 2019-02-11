@@ -14,6 +14,7 @@
 #ifndef OSG_CULLSETTINGS
 #define OSG_CULLSETTINGS 1
 
+#include <atomic>
 #include <iosfwd>
 #include <osg/Matrix>
 #include <osg/ClearNode>
@@ -248,7 +249,7 @@ class OSG_EXPORT CullSettings
 
     protected:
 
-        InheritanceMask                             _inheritanceMask;
+        std::atomic<InheritanceMask>                _inheritanceMask;
         InheritanceMaskActionOnAttributeSetting     _inheritanceMaskActionOnAttributeSetting;
 
         ComputeNearFarMode                          _computeNearFar;

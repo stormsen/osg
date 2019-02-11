@@ -52,7 +52,7 @@ void CullSettings::setDefaults()
 
 void CullSettings::setCullSettings(const CullSettings& rhs)
 {
-    _inheritanceMask = rhs._inheritanceMask;
+    _inheritanceMask = rhs._inheritanceMask.load();
     _inheritanceMaskActionOnAttributeSetting = rhs._inheritanceMaskActionOnAttributeSetting;
 
     _computeNearFar = rhs._computeNearFar;
